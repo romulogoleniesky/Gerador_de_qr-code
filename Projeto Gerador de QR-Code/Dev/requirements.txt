@@ -1,0 +1,13 @@
+altgraph==0.17.3
+colorama==0.4.6
+pefile==2023.2.7
+pyinstaller==5.13.0
+pyinstaller-hooks-contrib==2023.5
+pypng==0.20220715.0
+PySide2==5.15.2.1
+PySimpleGUI==4.60.5
+PySimpleGUIQt==0.35.0
+pywin32-ctypes==0.2.2
+qrcode==7.4.2
+shiboken2==5.15.2.1
+typing_extensions==4.7.1
