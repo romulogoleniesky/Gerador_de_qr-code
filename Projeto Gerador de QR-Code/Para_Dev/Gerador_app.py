@@ -1,15 +1,15 @@
-import PySimpleGUIQt as sg
+import PySimpleGUIQt as sg               # Importando as bibliotecas.
 from os import getcwd
 import qrcode
 
 info_code = ''
 name_doc = ''
-cdw = getcwd()  # Retorna a URL do arquivo da imagem.
-local_img = str(f'{cdw}/Seu_QR-code/{name_doc}.png')
+cdw = getcwd()             # Retorna a URL do arquivo da imagem.
+local_img = str(f'{cdw}/Seu_QR-code/{name_doc}.png')       # URL completa da imagem.
 sg.theme('DarkGreen4')
 icone = './img/favicon.ico'
 
-def janela1():
+def janela1():    # Layout da primeira tela.
 	tela1 = [
 		[sg.Text('Digite uma informação a ser codificada: ')],
         [sg.InputText()],
@@ -19,7 +19,7 @@ def janela1():
         [sg.Button('Gerar'),sg.Button('Sair')]]
 	return sg.Window('Gerador de QR-Code', icon=(icone), size=(280, 380), layout=tela1)
 
-def janela2():
+def janela2():    #  Layout da segunda tela.
 	tela2 = [
 		[sg.Text(f'Seu arquivo: {values[1]}.png .')],
     	[sg.Image(f'./Seu_QR-Code/{values[1]}.png')],
@@ -29,7 +29,7 @@ def janela2():
 
 janela = janela1()
 
-def gerar():
+def gerar():      # Função que gera o QR-Code.
     info_code = values[0]
     name_doc = values[1]
     img = qrcode.make(info_code)
@@ -37,7 +37,7 @@ def gerar():
     img.save(f'./Seu_QR-Code/{name_doc}.png')
 
 
-while True:
+while True:         # Loop para manter a leitura dos eventos das telas.
 	event, values = janela.read()
 	if event == 'Gerar' and (len(values[0]) == 0 or len(values[1]) == 0):
 		sg.popup('PRECISA INSERIR UM TEXTO A SER CODIFICADO E UM NOME PARA O ARQUIVO!', title="ATENÇÃO", icon=(icone))
@@ -53,4 +53,4 @@ while True:
 	elif event == sg.WIN_CLOSED or event == 'Sair':
 		break
 
-janela.close()
+janela.close() 
